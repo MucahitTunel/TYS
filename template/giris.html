@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row marl justify-content-center login_row">
+        <div class="col-md-6 col-lg-6 col-xl-4">
+            <div>
+                <div>
+                    <center>
+                    <div >Django CRM</div>
+                    <form method="POST" action="/index.html">{% csrf_token %}
+                        <div>
+                            <input type="text"  name="email">
+                        </div>
+                        <div >
+                            <input type="password"name="password">
+                        </div>
+                        <!--<div>Şifremi Unuttum? <a href="Ortak/sifremi-unuttum.html/">Tıklayınız</a></div>-->
+                        <div>Şifremi Unuttum? <a href="/Ortak/sifremi-unuttum">Tıklayınız</a></div>
+                        {% if error %}
+                            <p>{{ message }}</p>
+                        {% endif %}
+                        <button type="submit" >Giriş</button>
+                    </form>
+                        </center>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
