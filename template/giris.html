@@ -14,17 +14,17 @@
                 <div>
                     <center>
                     <div >Django CRM</div>
-                    <form method="POST" action="/index.html">{% csrf_token %}
+                    <form method="POST">{% csrf_token %}
                         <div>
-                            <input type="text"  name="email">
+                            <input type="text"  name="e_Mail">
                         </div>
                         <div >
-                            <input type="password"name="password">
+                            <input type="password"name="Sifre">
                         </div>
                         <!--<div>Şifremi Unuttum? <a href="Ortak/sifremi-unuttum.html/">Tıklayınız</a></div>-->
-                        <div>Şifremi Unuttum? <a href="/Ortak/sifremi-unuttum">Tıklayınız</a></div>
+                        <div>Şifremi Unuttum? <a href="/sifremi-unuttum">Tıklayınız</a></div>
                         {% if error %}
-                            <p>{{ message }}</p>
+                            <p>{{ mesaj }}</p>
                         {% endif %}
                         <button type="submit" >Giriş</button>
                     </form>

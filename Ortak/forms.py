@@ -3,6 +3,9 @@ from django import forms
 from django.contrib.auth import authenticate
 
 class KullanıcıForm(forms.ModelForm):
+
+    Sifre = forms.CharField(max_length=24, required=False)
+
     class Meta:
         model = Kullanici
 
@@ -15,9 +18,18 @@ class KullanıcıForm(forms.ModelForm):
             'Ad',
             'Soyad',
             'Kullanıcı_adı',
-            'Sifre',
             'Rol',
         ]
+
+    def __init__(self, *args, **kwargs):
+        super(KullanıcıForm, self).__init__(*args, **kwargs)
+
+        self.fields['Ad'].required = True
+        self.fields['Kullanıcı_adı'].required = True
+        self.fields['e_Mail'].required = True
+
+        if not self.instance.pk:
+            self.fields['Sifre'].required = True
 
 
     def sifre_temizle(self):
@@ -51,6 +63,9 @@ class KullanıcıForm(forms.ModelForm):
 
 
 class Giris_form(forms.ModelForm):
+    e_Mail = forms.EmailField()
+    Sifre = forms.CharField(widget=forms.PasswordInput)
+
 
     class Meta:
         model = Kullanici
@@ -68,7 +83,7 @@ class Giris_form(forms.ModelForm):
         sifre = self.cleaned_data.get('Sifre')
 
         if email and sifre:
-            self.user = authenticate(e_Mail = email, Sifre = sifre)
+            self.user = authenticate(username = email, password = sifre)
             if self.user:
                 if not self.user.is_active:
                     raise forms.ValidationError("kullanıcı aktif değil")

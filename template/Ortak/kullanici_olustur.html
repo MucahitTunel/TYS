@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Kullanıcı Kayıt</h1>
+                <form method="POST" enctype="multipart/form-data" >
+                    {% csrf_token %}
+                    {{ kullanici_form }}
+
+                    <input class="btn btn-primary" type="submit" value="Kaydet">
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

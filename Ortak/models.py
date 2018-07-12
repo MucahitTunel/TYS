@@ -10,11 +10,11 @@ class Kullanici(AbstractBaseUser):#Kullanıcı
     Kullanıcı_adı = models.CharField(max_length=20, unique=True)
     Ad = models.CharField(max_length=30)
     Soyad = models.CharField(max_length=30)
-    Admin_mi = models.BooleanField(default=False)
-    Personel_mi = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
     e_Mail = models.EmailField(max_length=255, unique=True)
     Rol = models.CharField(max_length=50, choices=Roller)
-    Sifre = models.CharField(max_length=24)
+
 
     USERNAME_FIELD = 'e_Mail'
     REQUIRED_FIELDS = ['Kullanıcı_adı',]
@@ -34,7 +34,7 @@ class Takim(models.Model):#Takım
     numara = models.ManyToManyField(Kullanici)
 
     def __str__(self):
-        return self.name
+        return self.Ad
 
 
 
