@@ -7,16 +7,31 @@
 <body>
 
 
+<center>
+<table border="1" cellpadding="3" cellspacing="0">
+    <tr bgcolor="#51d4db">
+        <td align="center">Ad</td>
+        <td align="center">Soyad</td>
+        <td align="center">eMail</td>
+        <td align="center">Kullanici_adi</td>
+    </tr>
+
+
 
 {% for kullanıcı in kullanicilar %}
+    <tr>
+        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Ad}}</a></td>
+        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Soyad}}</a></td>
+        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.e_Mail}}</a></td>
+        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Kullanıcı_adı}}</a></td>
+    </tr>
 
-    {{kullanıcı.Ad}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    {{kullanıcı.Soyad}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 {% endfor %}
 
+</table>
 
-
+    </center>
 
 </body>
 </html>

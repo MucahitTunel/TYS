@@ -5,6 +5,7 @@ from django.urls import reverse
 # Create your models here.
 
 
+
 class Kullanici(AbstractBaseUser):#Kullanıcı
     TC = models.BigIntegerField(unique=True)
     Kullanıcı_adı = models.CharField(max_length=20, unique=True)

@@ -9,10 +9,9 @@ from Ortak.forms import Giris_form, KullanıcıForm
 
 
 def admin_required(function):
-
     def wrapper(request, *args, **kwargs):
         user = request.user
-        if user.is_authenticated:
+        if user.is_superuser:
             if user.is_superuser:
                 return function(request, *args, **kwargs)
             else:
@@ -20,9 +19,6 @@ def admin_required(function):
         else:
             return redirect("Ortak:Giriş")
     return wrapper
-
-
-
 
 @login_required
 def home(request):
@@ -89,15 +85,14 @@ def kullanici_olustur(request):
 @admin_required
 def kullanici_listele(request):
 
-    kullanicilar = Kullanici.objects.all()
+    kullanicilar = Kullanici.nesne.all()#UserManager nesnesinden tüm kullanıcı bilgilerini alıyoruz
 
-    ad = request.POST.get('Ad')
-    soyad = request.POST.get('Soyad')
-    kullanici_adi = request.POST.get('Kullanıcı_adı')
-    eMail = request.POST.get('e_Mail')
+    # ad = request.POST.get('Ad')
+    # soyad = request.POST.get('Soyad')
+    # kullanici_adi = request.POST.get('Kullanıcı_adı')
+    # eMail = request.POST.get('e_Mail')
 
-    aktif_kullanıcı = request.POST.get(is_active=True)
-    aktif_olmayan_kullanici = request.POST.get(is_active=False)
+
 
     # if ad:
     #     kullanicilar = kullanicilar.filter(kullanicilar__icontains=ad)
@@ -109,9 +104,7 @@ def kullanici_listele(request):
     #     kullanicilar = kullanicilar.filter(kullanicilar__icontains=eMail)
 
 
-    return render(request,'Ortak/kullanici_listele.html', {'kullanicilar':kullanicilar,
-                                                           'aktif_kullanici':aktif_kullanıcı,
-                                                           'aktif_olmayan_kullanici':aktif_olmayan_kullanici})
+    return render(request,'Ortak/kullanici_listele.html', {'kullanicilar':kullanicilar})
 
 
 
@@ -135,11 +128,11 @@ def kullanici_olustur(request):
 
 @admin_required
 def kullanici_goruntule(request, user_id):
-    users_list = Kullanici.objects.all()
-    user_obj = Kullanici.objects.filter(id=user_id)
+    # users_list = Kullanici.objects.all()
+    user_obj = Kullanici.nesne.filter(id=user_id)
 
-    return render(request, "list.html", {
-        'users': users_list, 'user_obj': user_obj})
+    return render(request, "Ortak/kullanici_goruntule.html", {
+         'user_obj': user_obj})
 
 
 
