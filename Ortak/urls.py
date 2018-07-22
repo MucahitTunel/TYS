@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$', views.home, name="Ana_sayfa"),
     url(r'^profil/$', views.profile, name="Profil"),
     url(r'^giris/$', views.giris_crm, name="Giriş"),
+    url(r'^cikis/$', views.cıkıs_crm, name="Çıkış"),
     url(r'^sifremi-unuttum/$', views.sifremi_unuttum, name="Sifremiunuttum"),
     url(r'^cikis/$', views.cıkıs_crm, name="Cıkıs"),
     url(r'^kullanici_olustur/$', views.kullanici_olustur, name="olustur"),

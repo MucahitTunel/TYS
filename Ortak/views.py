@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http.response import Http404
 from django.contrib.auth import logout, authenticate, login
@@ -22,7 +21,7 @@ def admin_required(function):
 
 @login_required
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'base.html')
 
 
 @login_required
@@ -32,12 +31,35 @@ def profile(request):
     return render(request, "profil.html", {'user_obj': user_obj})
 
 
+# def giris_crm(request):
+#     if request.user.is_authenticated:
+#         return HttpResponseRedirect('/')
+#     if request.method == 'POST':
+#         form = Giris_form(request.POST, request=request)
+#         if form.is_valid():
+#             user = authenticate(username = request.POST.get('e_Mail'), password = request.POST.get('Sifre'))
+#             if user is not None:
+#                 if user.is_active:
+#                     login(request,user)
+#                     return HttpResponseRedirect('/')
+#                 else:
+#                     return render(request,'giris.html',{'error':True, "mesaj":"Hesabınız aktif değil"})
+#             else:
+#                return render(request,'giris.html',{"error":True, "mesaj":"Kullanıcı adı veya şifre hatalı"})
+#         else:
+#            return render(request,'giris.html',{"error":True, "mesaj":"Lütfen formu düzgün bir şekilde doldurunuz"})
+#
+#     return render(request,'giris.html')
+
+
+
 def giris_crm(request):
+
     if request.user.is_authenticated:
         return HttpResponseRedirect('/')
     if request.method == 'POST':
         form = Giris_form(request.POST, request=request)
-        if form.is_valid():
+        if not form.is_valid():
             user = authenticate(username = request.POST.get('e_Mail'), password = request.POST.get('Sifre'))
             if user is not None:
                 if user.is_active:
@@ -61,7 +83,7 @@ def sifremi_unuttum(request):
 def cıkıs_crm(request):
     logout(request)
     request.session.flush()
-    return redirect("Ortak:giris")
+    return redirect("Ortak:Giriş")
 
 
 @admin_required
@@ -129,16 +151,6 @@ def kullanici_olustur(request):
 @admin_required
 def kullanici_goruntule(request, user_id):
     # users_list = Kullanici.objects.all()
-    user_obj = Kullanici.nesne.filter(id=user_id)
+    kullanici = Kullanici.nesne.get(id=user_id)
 
-    return render(request, "Ortak/kullanici_goruntule.html", {
-         'user_obj': user_obj})
-
-
-
-
-
-
-
-
-
+    return render(request, "Ortak/kullanici_goruntule.html", {'kullanici': kullanici})

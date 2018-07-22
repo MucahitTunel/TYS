@@ -1,19 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
 
-    {{ user_obj.Ad }}
-    {{ user_obj.Soyad }}
-    {{ user_obj.e_Mail }}
-    {{ user_obj.Rol }}
-    {{ user_obj.Kullanıcı_adı }}
-    {{ user_obj.TC }}
+{% block body %}
 
 
-</body>
-</html>
+    <!--{{ user_obj.Ad }}-->
+    <!--{{ user_obj.Soyad }}-->
+    <!--{{ user_obj.e_Mail }}-->
+    <!--{{ user_obj.Rol }}-->
+    <!--{{ user_obj.Kullanıcı_adı }}-->
+    <!--{{ user_obj.TC }}-->
+
+<center>
+
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+
+
+    <h3>KULLANICI BİLGİLERİ</h3>
+    <table border="1" cellpadding="3" cellspacing="0">
+        <tr bgcolor="#51d4db">
+            <td align="center">Ad</td>
+            <td align="center">Soyad</td>
+            <td align="center">e_Mail</td>
+            <td align="center">Rol</td>
+            <td align="center">Kullanıcı_Adı</td>
+            <td align="center">TC</td>
+        </tr>
+
+        <tr>
+            <td align="center">{{ kullanici.Ad }}</td>
+            <td align="center">{{ kullanici.Soyad }}</td>
+            <td align="center">{{ kullanici.e_Mail }}</td>
+            <td align="center">{{ kullanici.Rol }}</td>
+            <td align="center">{{ kullanici.Kullanıcı_adı }}</td>
+            <td align="center">{{ kullanici.TC }}</td>
+        </tr>
+
+    </table>
+</center>
+
+{% endblock %}

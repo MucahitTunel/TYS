@@ -1,6 +1,7 @@
 from django.db import models
 from Ortak.models import Takim, Kullanici
 
+# Kullanıcı hesap bilgilerini göstermek için oluşturuldu
 class Hesap(models.Model):
     Ad = models.CharField(max_length=20)
     eMail = models.EmailField()

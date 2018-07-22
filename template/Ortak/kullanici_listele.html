@@ -1,37 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html'%}
 
+{% block body %}
 
 <center>
+
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+
+
+
+    <h3>KULLANICILAR</h3>
 <table border="1" cellpadding="3" cellspacing="0">
     <tr bgcolor="#51d4db">
         <td align="center">Ad</td>
         <td align="center">Soyad</td>
         <td align="center">eMail</td>
         <td align="center">Kullanici_adi</td>
+        <td align="center">Detay</td>
     </tr>
 
 
 
-{% for kullanıcı in kullanicilar %}
+{% for kullanici in kullanicilar %}
     <tr>
-        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Ad}}</a></td>
-        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Soyad}}</a></td>
-        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.e_Mail}}</a></td>
-        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanıcı.id %}">{{kullanıcı.Kullanıcı_adı}}</a></td>
+        <td>{{kullanici.Ad}}</td>
+        <td>{{kullanici.Soyad}}</td>
+        <td>{{kullanici.e_Mail}}</td>
+        <td>{{kullanici.Kullanıcı_adı}}</td>
+        <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanici.id %}">Detaylar</a></td>
     </tr>
 
 
 {% endfor %}
 
-</table>
-
-    </center>
-
-</body>
-</html>
+    {% endblock %}
