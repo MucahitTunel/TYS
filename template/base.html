@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #4CAF50;
+}
+
+.active {
+    background-color: #4CAF50;
+}
+
+
+.login_form_block {
+    margin-top: 30px;
+    padding:50px 15px;
+    .welcome{
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .forgot{
+      font-size: 13px;
+      display: block;
+      color: darken($text_color2, 15%);
+      a{
+        display: inline-block;
+        color: $dark_sky;
+        margin-bottom: 10px;
+        font-size: 13px;
+      }
+    }
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+</style>
+
+<body>
+
+<ul>
+    <li><a href="/">Ana Sayfa</a></li>
+    <li><a href="/kullanici_olustur">Kullanıcı Oluştur</a></li>
+    <li><a href="/kullanici_listele">Kullanıcılar</a></li>
+    <li><a href="/cikis">Çıkış Yap</a></li>
+</ul>
+
+
+{% block body %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate
 
 class KullanıcıForm(forms.ModelForm):
 
-    Sifre = forms.CharField(max_length=24, required=False)
+
 
     class Meta:
         model = Kullanici
@@ -19,6 +19,7 @@ class KullanıcıForm(forms.ModelForm):
             'Soyad',
             'Kullanıcı_adı',
             'Rol',
+            'Sifre',
         ]
 
     def __init__(self, *args, **kwargs):
@@ -27,9 +28,10 @@ class KullanıcıForm(forms.ModelForm):
         self.fields['Ad'].required = True
         self.fields['Kullanıcı_adı'].required = True
         self.fields['e_Mail'].required = True
+        self.fields['Sifre'].required = True
+        # if not self.instance.pk:
+        #     self.fields['Sifre'].required = True
 
-        if not self.instance.pk:
-            self.fields['Sifre'].required = True
 
 
     def sifre_temizle(self):
@@ -46,7 +48,7 @@ class KullanıcıForm(forms.ModelForm):
         email = self.cleaned_data.get('e_Mail')
         if self.instance.id:
             if self.instance.e_Mail != email:
-                if not Kullanici.objects.filter(e_Mail=self.cleaned_data.get('e_Mail')).exists():
+                if not Kullanici.nesne.filter(e_Mail=self.cleaned_data.get('e_Mail')).exists():
                     return self.cleaned_data.get('e_Mail')
                 else:
                     return forms.ValidationError("Mail kullanımda")
@@ -55,7 +57,7 @@ class KullanıcıForm(forms.ModelForm):
                 return self.cleaned_data.get('e_Mail')
 
         else:
-            if not Kullanici.objects.filter(e_Mail = self.cleaned_data.get('e_Mail')).exists():
+            if not Kullanici.nesne.filter(e_Mail = self.cleaned_data.get('e_Mail')).exists():
                 return self.cleaned_data.get('e_Mail')
 
             else:
@@ -63,8 +65,8 @@ class KullanıcıForm(forms.ModelForm):
 
 
 class Giris_form(forms.ModelForm):
-    e_Mail = forms.EmailField()
-    Sifre = forms.CharField(widget=forms.PasswordInput)
+    # e_Mail = forms.EmailField()
+    # Sifre = forms.CharField(widget=forms.PasswordInput)
 
 
     class Meta:

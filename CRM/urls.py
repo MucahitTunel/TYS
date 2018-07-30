@@ -22,4 +22,5 @@ urlpatterns = [
 
 
     url(r'^', include('Ortak.urls')),
+    url(r'^hesap/',include('account.urls')),
 ]

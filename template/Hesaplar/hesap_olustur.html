@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<center>
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h1>Kullanıcı Kayıt</h1>
+                <form method="POST" enctype="multipart/form-data" class="form-control">
+                    {% csrf_token %}
+
+                    {% hesap_form %}
+                    <input class="btn btn-primary" type="submit" value="Kaydet">
+                </form>
+            </div>
+        </div>
+    </div>
+</center>
+{% endblock %}

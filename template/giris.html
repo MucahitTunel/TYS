@@ -1,39 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Django CRM</title>
+    <!-- Bootstrap core CSS -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/css/bootstrap.min.css" />
+	<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" />
+
 </head>
-<body>
-
-
+<body class="login_register_body">
 <div class="container">
     <div class="row marl justify-content-center login_row">
         <div class="col-md-6 col-lg-6 col-xl-4">
-            <div>
-                <div>
-                    <center>
-                    <div >Django CRM</div>
-                    <form method="POST">{% csrf_token %}
-                        <div>
-                            <input type="text"  name="e_Mail">
+            <div class="login_block">
+                <div class="login_form_block">
+					<div class="welcome"><center>Kullanıcı Girişi</center></div>
+                    <form method="POST" action="">
+						{% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control"  placeholder="Email" name="e_Mail">
                         </div>
-                        <div >
-                            <input type="password"name="Sifre">
+                        <div class="form-group">
+                            <input type="password" class="form-control"  placeholder="Şifre" name="Sifre">
                         </div>
-                        <!--<div>Şifremi Unuttum? <a href="Ortak/sifremi-unuttum.html/">Tıklayınız</a></div>-->
-                        <div>Şifremi Unuttum? <a href="/sifremi-unuttum">Tıklayınız</a></div>
+                        <div class="forgot">Şifremi Unuttum <a href="/password-reset/">Tıklayınız?</a></div>
                         {% if error %}
                             <p>{{ mesaj }}</p>
                         {% endif %}
-                        <button type="submit" >Giriş</button>
+                        <button type="submit" class="btn btn-danger">GİRİŞ</button>
                     </form>
-                        </center>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
 </body>
 </html>
