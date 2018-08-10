@@ -18,14 +18,15 @@
     <tr bgcolor="#51d4db">
         <td align="center">Ad</td>
         <td align="center">Soyad</td>
-        <td align="center">eMail</td>
-        <td align="center">Kullanici_adi</td>
+        <td align="center">Mail</td>
+        <td align="center">Kullanıcı Adı</td>
         <td align="center">Detay</td>
     </tr>
 
 
 
-{% for kullanici in kullanicilar %}
+    {% for kullanici in kullanicilar %}
+
     <tr>
         <td>{{kullanici.Ad}}</td>
         <td>{{kullanici.Soyad}}</td>
@@ -34,7 +35,9 @@
         <td><a href="{% url 'Ortak:Kullanıcı_görüntüle' kullanici.id %}">Detaylar</a></td>
     </tr>
 
+    {% endfor %}
 
-{% endfor %}
 
-    {% endblock %}
+
+
+{% endblock %}

@@ -1,5 +1,6 @@
-from account.models import Hesap
+from .models import Hesap
 from django import forms
+
 
 class HesapForm(forms.ModelForm):
 
@@ -21,9 +22,5 @@ class HesapForm(forms.ModelForm):
             'takim',
             'eMail',
             'assigned_to',
-            'created_by',
             'aciklama',
         ]
-
-
-

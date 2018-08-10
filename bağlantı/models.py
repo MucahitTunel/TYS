@@ -10,7 +10,7 @@ class Baglanti(models.Model):
     Soyad = models.CharField(max_length=20)
     hesap = models.ForeignKey(Hesap, related_name='Hesap', on_delete=models.CASCADE)
     eMail = models.EmailField()
-    tanımlı = models.ManyToManyField(Kullanici)
+    assigned_to = models.ManyToManyField(Kullanici)
     created_by = models.ForeignKey(Kullanici, related_name='hesap_olusturan_kisi', on_delete=models.CASCADE)
     created_on = models.DateTimeField(("Created on"), auto_now_add=True)
     is_active = models.BooleanField(default=False)
